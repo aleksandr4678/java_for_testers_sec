@@ -4,6 +4,10 @@ public class MyFirstProgram {
 
 	public static void main (String [] args)
 	{
-		System.out.println ("Hello World");
+		String somebody = "World";
+		System.out.println ("Hello " + somebody);
+		int l = 8;
+		int s = l*l;
+		System.out.println("Sqrd sqrt with side as " + l + " = " + s);
 	}
 }
