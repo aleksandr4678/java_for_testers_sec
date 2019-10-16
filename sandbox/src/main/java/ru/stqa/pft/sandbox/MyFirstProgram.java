@@ -8,6 +8,6 @@ public class MyFirstProgram {
 		System.out.println ("Hello " + somebody);
 		int l = 8;
 		int s = l*l;
-		System.out.println("Sqrd sqrt with side as " + l + " = " + s);
+		System.out.println("Площадь квадрата со стороной " + l + " = " + s);
 	}
 }
