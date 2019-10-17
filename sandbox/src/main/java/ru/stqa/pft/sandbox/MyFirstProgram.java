@@ -4,10 +4,17 @@ public class MyFirstProgram {
 
 	public static void main (String [] args)
 	{
-		String somebody = "World";
-		System.out.println ("Hello " + somebody);
-		int l = 8;
-		int s = l*l;
-		System.out.println("Площадь квадрата со стороной " + l + " = " + s);
+		hello ("world");
+        hello ("user");
+        hello ("Alex");
+
+	    Square s = new Square(5);
+		System.out.println("Area for square with side " + s.l + " = " + s.area());
+
+        Rectangle r = new Rectangle(4, 6);
+        System.out.println("Area for rectangle with side " + r.a + " and " + r.b + " = " + r.area());
 	}
+    public static void hello (String somebody) {
+        System.out.println("Hello, " + somebody + "!");
+    }
 }
