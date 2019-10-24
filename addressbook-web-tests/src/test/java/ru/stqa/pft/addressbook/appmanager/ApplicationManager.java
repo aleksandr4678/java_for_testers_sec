@@ -2,11 +2,12 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.addressbook.test.GroupData;
-
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
+    private  NavigationHelper navigationHelper;
+    private  SessionHelper sessionHelper;
+    private GroupHelper groupHelper;
     public WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -17,47 +18,12 @@ public class ApplicationManager {
         driver = new FirefoxDriver();
         baseUrl = "https://www.katalon.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-        loginToAddressBook("admin", "secret");
-    }
-
-    private void loginToAddressBook(String username, String password) {
         driver.get("http://localhost/addressbook/");
-        driver.findElement(By.name("user")).click();
-        driver.findElement(By.name("user")).clear();
-        driver.findElement(By.name("user")).sendKeys(username);
-        driver.findElement(By.name("pass")).click();
-        driver.findElement(By.name("pass")).clear();
-        driver.findElement(By.name("pass")).sendKeys(password);
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Password:'])[1]/following::input[2]")).click();
+        groupHelper = new GroupHelper(driver);
+        navigationHelper = new NavigationHelper(driver);
+        sessionHelper = new SessionHelper(driver);
+        sessionHelper.loginToAddressBook("admin", "secret");
     }
-
-    public void returnToGroupPage() {
-      driver.findElement(By.linkText("group page")).click();
-    }
-
-    public void submitGroupCreation() {
-      driver.findElement(By.name("submit")).click();
-    }
-
-    public void fillGroupForm(GroupData groupData) {
-      driver.findElement(By.name("group_name")).click();
-      driver.findElement(By.name("group_name")).clear();
-      driver.findElement(By.name("group_name")).sendKeys(groupData.getName());
-      driver.findElement(By.name("group_header")).click();
-      driver.findElement(By.name("group_header")).clear();
-      driver.findElement(By.name("group_header")).sendKeys(groupData.getHeader());
-      driver.findElement(By.name("group_footer")).click();
-      driver.findElement(By.name("group_footer")).clear();
-      driver.findElement(By.name("group_footer")).sendKeys(groupData.getFooter());
-    }
-
-    public void initGroupCreation() {
-      driver.findElement(By.name("new")).click();
-    }
-
-    public void goToGroupPage() {
-          driver.findElement(By.linkText("groups")).click();
-      }
 
     public void stop() {
         driver.quit();
@@ -96,11 +62,11 @@ public class ApplicationManager {
           }
       }
 
-    public void deleteSelectedGroup() {
-        driver.findElement(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='test1-3'])[1]/following::input[2]")).click();
+    public GroupHelper getGroupHelper() {
+        return groupHelper;
     }
 
-    public void selectGroup() {
-        driver.findElement(By.name("selected[]")).click();
+    public NavigationHelper getNavigationHelper() {
+        return navigationHelper;
     }
 }
