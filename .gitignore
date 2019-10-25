@@ -18,3 +18,8 @@ gradle-app.setting
 *.css
 *.js
 *.bin
+sandbox/.idea/vcs.xml
+sandbox/.idea/misc.xml
+sandbox/.idea/gradle.xml
+sandbox/build/test-results/test/binary/output.bin.idx
+sandbox/build/test-results/test/TEST-ru.stqa.pft.sandbox.EquationTests.xml
