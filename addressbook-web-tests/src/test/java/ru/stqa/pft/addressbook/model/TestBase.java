@@ -14,12 +14,12 @@ public class TestBase {
     }
 
     @AfterClass(alwaysRun = true)
-      public void tearDown() throws Exception {
+    public void tearDown() throws Exception {
         app.stop();
         /*String verificationErrorString = verificationErrors.toString();
           if (!"".equals(verificationErrorString)) {
               fail(verificationErrorString);
           }*/
-      }
+    }
 
 }
