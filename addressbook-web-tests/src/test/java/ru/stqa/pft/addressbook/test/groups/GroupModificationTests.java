@@ -1,11 +1,11 @@
-package ru.stqa.pft.addressbook.test;
+package ru.stqa.pft.addressbook.test.groups;
 
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.TestBase;
 
 public class GroupModificationTests extends TestBase {
     @Test
-    public void groupModification () {
+    public void groupModification() {
         app.getNavigationHelper().goToGroupPage();
         app.getGroupHelper().selectGroup();
         app.getGroupHelper().initGroupModification();
