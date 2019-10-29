@@ -27,3 +27,5 @@ sandbox/build/test-results/test/TEST-ak.dz.first.second.DistanceTests.xml
 addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.GroupDeletionTests.xml
 addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.contacts.ContactCreation.xml
 addressbook-web-tests/.idea/uiDesigner.xml
+addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.groups.GroupCreationTests.xml
+addressbook-web-tests/build/test-results/test/binary/output.bin.idx
