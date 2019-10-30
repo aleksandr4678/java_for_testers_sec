@@ -16,4 +16,7 @@ public class NavigationHelper extends HelperBase {
     public void createNewContact() {
         click(By.linkText("add new"));
     }
+    public void editContact() {
+        click(By.xpath("/html/body/div[1]/div[4]/form[2]/table/tbody/tr[3]/td[8]/a/img"));
+    }
 }
