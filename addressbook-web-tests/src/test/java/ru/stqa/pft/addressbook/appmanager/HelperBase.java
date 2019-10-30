@@ -14,6 +14,10 @@ public class HelperBase {
         driver.findElement(locator).click();
     }
 
+    protected void acceptAlert() {
+        driver.switchTo().alert().accept();
+    }
+
     protected void type(By locator, String text) {
         click(locator);
         if (text != null) {
