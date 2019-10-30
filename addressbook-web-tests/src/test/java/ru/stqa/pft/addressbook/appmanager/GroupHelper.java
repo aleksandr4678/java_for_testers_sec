@@ -29,7 +29,7 @@ public class GroupHelper extends HelperBase {
     }
 
     public void deleteSelectedGroup() {
-        click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='test4-modify-1'])[1]/following::input[2]"));
+        click(By.xpath("/html/body/div[1]/div[4]/form/input[5]"));
     }
 
     public void selectGroup() {
