@@ -18,6 +18,11 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]"));
     }
 
+    public void submitContactUpdate() {
+        click(By.xpath("/html/body/div[1]/div[4]/form[1]/input[22]"));
+    }
+    //*[@id="content"]/form[1]/input[22]
+
     public void fillContactForm(ContactData contactData) {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("middlename"), contactData.getMiddleName());
