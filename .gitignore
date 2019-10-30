@@ -30,3 +30,5 @@ addressbook-web-tests/.idea/uiDesigner.xml
 addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.groups.GroupCreationTests.xml
 addressbook-web-tests/build/test-results/test/binary/output.bin.idx
 addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.groups.GroupModificationTests.xml
+addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.contacts.ContactDeletionTests.xml
+addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.groups.GroupDeletionTests.xml

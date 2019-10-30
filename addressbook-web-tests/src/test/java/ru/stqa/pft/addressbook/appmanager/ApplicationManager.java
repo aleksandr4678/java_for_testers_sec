@@ -32,8 +32,6 @@ public class ApplicationManager {
         } else if (browser == BrowserType.IE) {
             driver = new InternetExplorerDriver();
         }
-        //driver = new FirefoxDriver();
-        //baseUrl = "https://www.katalon.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.get("http://localhost/addressbook/");
         groupHelper = new GroupHelper(driver);
