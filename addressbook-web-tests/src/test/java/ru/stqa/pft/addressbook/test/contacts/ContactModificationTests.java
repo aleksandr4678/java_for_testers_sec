@@ -12,6 +12,6 @@ public class ContactModificationTests extends TestBase {
                 "ContLastEdit", "CompanyOfContactEdit", "111232, tuda-to, syuda-toEdit",
                 "+74895238845", "contEdit@adg.com", null), false);
         app.getContactHelper().submitContactUpdate(); //page has a bug. its delete the updated contact.
-        app.getContactHelper().returnToHomePage();
+        app.getNavigationHelper().gotoHomePage();
     }
 }

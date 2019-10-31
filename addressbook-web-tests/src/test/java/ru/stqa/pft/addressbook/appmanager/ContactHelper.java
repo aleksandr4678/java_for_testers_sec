@@ -12,9 +12,9 @@ public class ContactHelper extends HelperBase {
         super(driver);
     }
 
-    public void returnToHomePage() {
+    /*public void returnToHomePage() {
         click(By.linkText("home page"));
-    }
+    }*/
 
     public void submitContactCreation() {
         click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]"));
