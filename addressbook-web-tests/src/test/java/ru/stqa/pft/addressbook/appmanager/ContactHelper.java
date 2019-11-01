@@ -12,20 +12,22 @@ public class ContactHelper extends HelperBase {
         super(driver);
     }
 
-    /*public void returnToHomePage() {
+    public void returnToHomePage() {
         click(By.linkText("home page"));
-    }*/
+    }
 
     public void submitContactCreation() {
         click(By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::input[1]"));
-    }
+    } ///html/body/div/div[4]/form/input[21]
 
     public void submitContactUpdate() {
         click(By.xpath("/html/body/div[1]/div[4]/form[1]/input[22]"));
     }
+
     public void createNewContact() {
         click(By.linkText("add new"));
     }
+
     public void editContact() {
         click(By.xpath("/html/body/div[1]/div[4]/form[2]/table/tbody/tr[2]/td[8]/a/img"));
     }
@@ -57,4 +59,14 @@ public class ContactHelper extends HelperBase {
         }
     }
 
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    public void createContact(ContactData contact, boolean creation) {
+        createNewContact();
+        fillContactForm(contact, creation);
+        submitContactCreation();
+        returnToHomePage();
+    }
 }

@@ -7,10 +7,15 @@ import ru.stqa.pft.addressbook.model.TestBase;
 public class ContactModificationTests extends TestBase {
     @Test
     public void groupModification() {
+        if (! app.getContactHelper().isThereAContact()){
+            app.getContactHelper().createContact(new ContactData("Temp", null,
+                    "Temp2", null, null,
+                    null, "temp@adg.com", "test1-1"), true);
+        }
         app.getContactHelper().editContact();
         app.getContactHelper().fillContactForm(new ContactData("ContNameEdit", "ContMiddleEdit",
                 "ContLastEdit", "CompanyOfContactEdit", "111232, tuda-to, syuda-toEdit",
-                "+74895238845", "contEdit@adg.com", null), false);
+                "+74895238845", "contEdit@adg.com", "test1-1"), false);
         app.getContactHelper().submitContactUpdate(); //page has a bug. its delete the updated contact.
         app.getNavigationHelper().gotoHomePage();
     }
