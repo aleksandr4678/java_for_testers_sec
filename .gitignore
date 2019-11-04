@@ -33,3 +33,4 @@ addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.
 addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.contacts.ContactDeletionTests.xml
 addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.groups.GroupDeletionTests.xml
 addressbook-web-tests/build/test-results/test/TEST-ru.stqa.pft.addressbook.test.contacts.ContactModificationTests.xml
+sandbox/build/test-results/test/TEST-ru.stqa.pft.sandbox.PrimeTests.xml
