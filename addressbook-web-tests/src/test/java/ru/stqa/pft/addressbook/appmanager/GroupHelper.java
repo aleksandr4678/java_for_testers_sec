@@ -32,8 +32,8 @@ public class GroupHelper extends HelperBase {
         click(By.xpath("/html/body/div[1]/div[4]/form/input[5]"));
     }
 
-    public void selectGroup() {
-        click(By.name("selected[]"));
+    public void selectGroup(int index) {
+        driver.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void initGroupModification() {
@@ -53,5 +53,9 @@ public class GroupHelper extends HelperBase {
         fillGroupForm(group);
         submitGroupCreation();
         returnToGroupPage();
+    }
+
+    public int getGroupCount() {
+        return  driver.findElements(By.name("selected[]")).size();
     }
 }
