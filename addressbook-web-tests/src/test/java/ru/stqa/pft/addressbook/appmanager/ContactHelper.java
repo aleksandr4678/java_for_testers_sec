@@ -79,7 +79,7 @@ public class ContactHelper extends HelperBase {
 
     public List<ContactData> getContactList() {
         List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = driver.findElements(By.cssSelector("td.center.selected[]"));
+        List<WebElement> elements = driver.findElements(By.name("selected[]"));
         for (WebElement element : elements) {
             String firstName = element.getText();
             String middleName = element.getText();
@@ -95,5 +95,4 @@ public class ContactHelper extends HelperBase {
         }
         return contacts;
     }
-
 }

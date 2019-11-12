@@ -12,7 +12,7 @@ public class ContactModificationTests extends TestBase {
     //! Test will be failed any time, due it has a bug with Update button.
     @Test
     public void groupModification() {
-        if (! app.getContactHelper().isThereAContact()){
+        if (!app.getContactHelper().isThereAContact()) {
             //new group creation, it would avoid situation when no one groups doesn't exit.
             app.getNavigationHelper().goToGroupPage();
             app.getGroupHelper().createGroup(new GroupData("temp_group", null, null));
@@ -21,7 +21,6 @@ public class ContactModificationTests extends TestBase {
                     "Temp2", null, null,
                     null, "temp@adg.com", "temp_group"), true);
         }
-        //int before = app.getContactHelper().getContactCount();
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().editContact();
         app.getContactHelper().fillContactForm(new ContactData("ContNameEdit", "ContMiddleEdit",
@@ -33,7 +32,6 @@ public class ContactModificationTests extends TestBase {
         app.getGroupHelper().selectGroup(0);
         app.getGroupHelper().deleteSelectedGroup();
         app.getNavigationHelper().gotoHomePage();
-        //int after = app.getContactHelper().getContactCount();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size());
         Assert.assertEquals(before, after);
