@@ -6,6 +6,8 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.TestBase;
 
+import java.util.List;
+
 public class ContactModificationTests extends TestBase {
     //! Test will be failed any time, due it has a bug with Update button.
     @Test
@@ -19,7 +21,8 @@ public class ContactModificationTests extends TestBase {
                     "Temp2", null, null,
                     null, "temp@adg.com", "temp_group"), true);
         }
-        int before = app.getContactHelper().getContactCount();
+        //int before = app.getContactHelper().getContactCount();
+        List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().editContact();
         app.getContactHelper().fillContactForm(new ContactData("ContNameEdit", "ContMiddleEdit",
                 "ContLastEdit", "CompanyOfContactEdit", "111232, tuda-to, syuda-toEdit",
@@ -30,7 +33,9 @@ public class ContactModificationTests extends TestBase {
         app.getGroupHelper().selectGroup(0);
         app.getGroupHelper().deleteSelectedGroup();
         app.getNavigationHelper().gotoHomePage();
-        int after = app.getContactHelper().getContactCount();
-        Assert.assertEquals(after, before);
+        //int after = app.getContactHelper().getContactCount();
+        List<ContactData> after = app.getContactHelper().getContactList();
+        Assert.assertEquals(after.size(), before.size());
+        Assert.assertEquals(before, after);
     }
 }
