@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
     @Test
-    public void testContactCreationTests() throws Exception {
+    public void testContactDeletion() throws Exception {
         if (!app.getContactHelper().isThereAContact()) {
             //new group creation, it would avoid situation when no one groups doesn't exit.
             app.getNavigationHelper().goToGroupPage();
