@@ -5,9 +5,9 @@ import java.util.Objects;
 public class ContactData {
     private int id;
     private final String firstName;
-    private final String middleName;
+    private String middleName;
     private final String lastName;
-    private final String companyName;
+    private String companyName;
     private final String address;
     private final String workTel;
     private final String email;
@@ -113,5 +113,17 @@ public class ContactData {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }

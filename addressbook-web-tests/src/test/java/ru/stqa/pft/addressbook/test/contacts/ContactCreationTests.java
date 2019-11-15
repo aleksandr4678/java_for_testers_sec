@@ -17,8 +17,8 @@ public class ContactCreationTests extends TestBase {
         app.getNavigationHelper().goToGroupPage();
         app.getGroupHelper().createGroup(new GroupData("temp_group", null, null));
         //main test, contact creation
-        ContactData contact = new ContactData("ContNameNew", "ContMiddleNew",
-                "ContLastNew", "CompanyOfContactNew", "111232, tuda-to, syuda-toNew",
+        ContactData contact = new ContactData("ContNameNew1", "ContMiddleNew1",
+                "ContLastNew1", "CompanyOfContactNew", "111232, tuda-to, syuda-toNew",
                 "+74895238845", "contNew@adg.com", "temp_group");
         app.getContactHelper().createContact(contact, true);
         //temp group deletion
@@ -27,9 +27,7 @@ public class ContactCreationTests extends TestBase {
         app.getGroupHelper().deleteSelectedGroup();
         app.getNavigationHelper().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
-        System.out.println("before" + before);
-        System.out.println("after" + after);
-        //Assert.assertEquals(after.size(), before.size() + 1);
+        Assert.assertEquals(after.size(), before.size() + 1);
 
         int max = 0;
         for (ContactData c : after) {
@@ -38,7 +36,10 @@ public class ContactCreationTests extends TestBase {
             }
         }
         contact.setId(max);
+        contact.setMiddleName(null);
+        contact.setCompanyName(null);
+        contact.setGroup(null);
         before.add(contact);
-        //Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
     }
 }
