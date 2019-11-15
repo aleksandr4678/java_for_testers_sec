@@ -6,6 +6,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.TestBase;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
@@ -16,11 +17,10 @@ public class ContactCreationTests extends TestBase {
         app.getNavigationHelper().goToGroupPage();
         app.getGroupHelper().createGroup(new GroupData("temp_group", null, null));
         //main test, contact creation
-        app.getContactHelper().createNewContact();
-        app.getContactHelper().fillContactForm(new ContactData("ContName", "ContMiddle",
-                "ContLast", "CompanyOfContact", "111232, tuda-to, syuda-to",
-                "+74895238845", "cont@adg.com", "temp_group"), true);
-        app.getContactHelper().submitContactCreation();
+        ContactData contact = new ContactData("ContNameNew1", "ContMiddleNew1",
+                "ContLastNew1", "CompanyOfContactNew", "111232, tuda-to, syuda-toNew",
+                "+74895238845", "contNew@adg.com", "temp_group");
+        app.getContactHelper().createContact(contact, true);
         //temp group deletion
         app.getNavigationHelper().goToGroupPage();
         app.getGroupHelper().selectGroup(0);
@@ -28,7 +28,18 @@ public class ContactCreationTests extends TestBase {
         app.getNavigationHelper().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() + 1);
-        after.remove(after.size() - 1);
-        Assert.assertEquals(before, after);
+
+        int max = 0;
+        for (ContactData c : after) {
+            if (c.getId() > max) {
+                max = c.getId();
+            }
+        }
+        contact.setId(max);
+        contact.setMiddleName(null);
+        contact.setCompanyName(null);
+        contact.setGroup(null);
+        before.add(contact);
+        Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
     }
 }

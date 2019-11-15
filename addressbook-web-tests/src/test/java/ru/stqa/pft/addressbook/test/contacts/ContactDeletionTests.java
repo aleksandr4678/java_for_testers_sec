@@ -11,16 +11,18 @@ import java.util.List;
 public class ContactDeletionTests extends TestBase {
     @Test
     public void testContactDeletion() throws Exception {
+        //new group creation, it would avoid situation when no one groups doesn't exit.
+        app.getNavigationHelper().goToGroupPage();
+        app.getGroupHelper().createGroup(new GroupData("!!!temp_group", null, null));
+        app.getNavigationHelper().gotoHomePage();
         if (!app.getContactHelper().isThereAContact()) {
-            //new group creation, it would avoid situation when no one groups doesn't exit.
-            app.getNavigationHelper().goToGroupPage();
-            app.getGroupHelper().createGroup(new GroupData("temp_group", null, null));
             //new contact creation
             app.getContactHelper().createContact(new ContactData("Temp", null,
                     "Temp2", null, null,
-                    null, "temp@adg.com", "temp_group"), true);
+                    null, "temp@adg.com", "!!!temp_group"), true);
         }
         //main test, contact deletion
+        app.getNavigationHelper().gotoHomePage();
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().selectContact(0);
         app.getContactHelper().deleteContact();

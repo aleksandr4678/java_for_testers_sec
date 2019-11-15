@@ -3,17 +3,17 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-    private final String id;
+    private int id;
     private final String firstName;
-    private final String middleName;
+    private String middleName;
     private final String lastName;
-    private final String companyName;
+    private String companyName;
     private final String address;
     private final String workTel;
     private final String email;
     private String group;
 
-    public ContactData(String id, String firstName, String middleName, String lastName, String companyName, String address,
+    public ContactData(int id, String firstName, String middleName, String lastName, String companyName, String address,
                        String workTel, String email, String group) {
         this.id = id;
         this.firstName = firstName;
@@ -28,7 +28,7 @@ public class ContactData {
 
     public ContactData(String firstName, String middleName, String lastName, String companyName, String address,
                        String workTel, String email, String group) {
-        this.id = null;
+        this.id = 0;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -71,7 +71,7 @@ public class ContactData {
         return group;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -95,7 +95,7 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return Objects.equals(id, that.id) &&
+        return id == that.id &&
                 Objects.equals(firstName, that.firstName) &&
                 Objects.equals(middleName, that.middleName) &&
                 Objects.equals(lastName, that.lastName) &&
@@ -109,5 +109,21 @@ public class ContactData {
     @Override
     public int hashCode() {
         return Objects.hash(id, firstName, middleName, lastName, companyName, address, workTel, email, group);
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }

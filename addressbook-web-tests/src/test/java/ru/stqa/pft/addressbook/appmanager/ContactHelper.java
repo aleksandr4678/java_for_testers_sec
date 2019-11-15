@@ -82,17 +82,18 @@ public class ContactHelper extends HelperBase {
 
     public List<ContactData> getContactList() {
         List<ContactData> contacts = new ArrayList<ContactData>();
-        List<WebElement> elements = driver.findElements(By.id("maintable"));
+        List<WebElement> elements = driver.findElements(By.name("entry"));
         for (WebElement element : elements) {
-            String id = element.findElement(By.tagName("input")).getAttribute("value");
-            String firstName = element.getText();
-            String middleName = element.getText();
-            String lastName = element.getText();
-            String companyName = element.getText();
-            String address = element.getText();
-            String workTel = element.getText();
-            String email = element.getText();
-            String group = element.getText();
+            List<WebElement> cells = element.findElements(By.tagName("td"));
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            String firstName = cells.get(2).getText();
+            String middleName = null;
+            String lastName = cells.get(1).getText();
+            String companyName = null;
+            String address = cells.get(3).getText();
+            String workTel = cells.get(5).getText();
+            String email = cells.get(4).getText();
+            String group = null;
             ContactData contact = new ContactData(id, firstName, middleName, lastName, companyName, address, workTel,
                     email, group);
             contacts.add(contact);
