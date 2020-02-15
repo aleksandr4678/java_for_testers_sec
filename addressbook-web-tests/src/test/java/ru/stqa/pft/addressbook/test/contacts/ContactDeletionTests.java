@@ -13,7 +13,7 @@ public class ContactDeletionTests extends TestBase {
     public void testContactDeletion() throws Exception {
         //new group creation, it would avoid situation when no one groups doesn't exit.
         app.goTo().groupPage();
-        app.group().create(new GroupData("!!!temp_group", null, null));
+        app.group().create(new GroupData().withName("!!!temp_group"));
         app.goTo().gotoHomePage();
         if (!app.getContactHelper().isThereAContact()) {
             //new contact creation

@@ -15,7 +15,7 @@ public class ContactCreationTests extends TestBase {
         List<ContactData> before = app.getContactHelper().getContactList();
         //new group creation, it would avoid situation when no one groups doesn't exit.
         app.goTo().groupPage();
-        app.group().create(new GroupData("temp_group", null, null));
+        app.group().create(new GroupData().withName("temp_group"));
         //main test, contact creation
         ContactData contact = new ContactData("ContNameNew1", "ContMiddleNew1",
                 "ContLastNew1", "CompanyOfContactNew", "111232, tuda-to, syuda-toNew",
