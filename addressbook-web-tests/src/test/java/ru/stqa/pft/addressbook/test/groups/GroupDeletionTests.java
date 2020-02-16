@@ -8,6 +8,9 @@ import ru.stqa.pft.addressbook.model.TestBase;
 
 import java.util.Set;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+
 public class GroupDeletionTests extends TestBase {
 
     @BeforeMethod
@@ -23,8 +26,8 @@ public class GroupDeletionTests extends TestBase {
         Set<GroupData> before = app.group().all();
         GroupData deletedGroup = before.iterator().next();
         app.group().delete(deletedGroup);
+        assertThat(app.group().count(), equalTo(before.size() - 1));
         Set<GroupData> after = app.group().all();
-        Assert.assertEquals(after.size(), before.size()-1);
         before.remove(deletedGroup);
         Assert.assertEquals(before, after);
     }
