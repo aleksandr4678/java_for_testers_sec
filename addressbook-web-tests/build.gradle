@@ -5,8 +5,9 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.seleniumhq.selenium:selenium-java:4.0.0-alpha-3'
-    implementation 'org.testng:testng:7.0.0'
+    compile 'org.seleniumhq.selenium:selenium-java:4.0.0-alpha-3'
+    compile 'org.testng:testng:7.0.0'
+    compile 'org.hamcrest:hamcrest:2.2'
 }
 
 test {
