@@ -14,18 +14,18 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation() throws Exception {
         List<ContactData> before = app.getContactHelper().getContactList();
         //new group creation, it would avoid situation when no one groups doesn't exit.
-        app.getNavigationHelper().goToGroupPage();
-        app.getGroupHelper().createGroup(new GroupData("temp_group", null, null));
+        app.goTo().groupPage();
+        app.group().create(new GroupData().withName("temp_group"));
         //main test, contact creation
         ContactData contact = new ContactData("ContNameNew1", "ContMiddleNew1",
                 "ContLastNew1", "CompanyOfContactNew", "111232, tuda-to, syuda-toNew",
                 "+74895238845", "contNew@adg.com", "temp_group");
         app.getContactHelper().createContact(contact, true);
         //temp group deletion
-        app.getNavigationHelper().goToGroupPage();
-        app.getGroupHelper().selectGroup(0);
-        app.getGroupHelper().deleteSelectedGroup();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().groupPage();
+        app.group().selectGroup(0);
+        app.group().deleteSelectedGroup();
+        app.goTo().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() + 1);
 

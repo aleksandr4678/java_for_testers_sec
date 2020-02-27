@@ -12,9 +12,9 @@ public class ContactDeletionTests extends TestBase {
     @Test
     public void testContactDeletion() throws Exception {
         //new group creation, it would avoid situation when no one groups doesn't exit.
-        app.getNavigationHelper().goToGroupPage();
-        app.getGroupHelper().createGroup(new GroupData("!!!temp_group", null, null));
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().groupPage();
+        app.group().create(new GroupData().withName("!!!temp_group"));
+        app.goTo().gotoHomePage();
         if (!app.getContactHelper().isThereAContact()) {
             //new contact creation
             app.getContactHelper().createContact(new ContactData("Temp", null,
@@ -22,16 +22,16 @@ public class ContactDeletionTests extends TestBase {
                     null, "temp@adg.com", "!!!temp_group"), true);
         }
         //main test, contact deletion
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().selectContact(0);
         app.getContactHelper().deleteContact();
         app.getContactHelper().confirmContactDeleteAlert();
         //temp group deletion
-        app.getNavigationHelper().goToGroupPage();
-        app.getGroupHelper().selectGroup(0);
-        app.getGroupHelper().deleteSelectedGroup();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().groupPage();
+        app.group().selectGroup(0);
+        app.group().deleteSelectedGroup();
+        app.goTo().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() - 1);
         before.remove(before.size() - 1);
