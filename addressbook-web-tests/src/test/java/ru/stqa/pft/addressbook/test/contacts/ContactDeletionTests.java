@@ -17,9 +17,10 @@ public class ContactDeletionTests extends TestBase {
         app.goTo().homePage();
         if (!app.contact().isThereAContact()) {
             //new contact creation
-            app.contact().createContact(new ContactData("Temp", null,
-                    "Temp2", null, null,
-                    null, "temp@adg.com", "!!!temp_group"), true);
+            ContactData contact = new ContactData().withFirstName("ContNameNew1").withMiddleName("ContMiddleNew1").
+                    withLastName("ContLastNew1").withCompanyName("CompanyOfContactNew").withAddress("111232, tuda-to, syuda-toNew").
+                    withWorkTel("+74895238845").withEmail("contNew@adg.com").withGroup("!!!temp_group");
+            app.contact().createContact(contact, true);
         }
         //main test, contact deletion
         app.goTo().homePage();
