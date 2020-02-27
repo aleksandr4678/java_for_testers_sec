@@ -3,14 +3,14 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-    private int id;
-    private final String firstName;
+    private int id = Integer.MAX_VALUE;
+    private String firstName;
     private String middleName;
-    private final String lastName;
+    private String lastName;
     private String companyName;
-    private final String address;
-    private final String workTel;
-    private final String email;
+    private String address;
+    private String workTel;
+    private String email;
     private String group;
 
     public ContactData(int id, String firstName, String middleName, String lastName, String companyName, String address,
@@ -37,6 +37,10 @@ public class ContactData {
         this.workTel = workTel;
         this.email = email;
         this.group = group;
+    }
+
+    public ContactData() {
+
     }
 
     public String getFirstName() {
@@ -111,19 +115,48 @@ public class ContactData {
         return Objects.hash(id, firstName, middleName, lastName, companyName, address, workTel, email, group);
     }
 
-    public void setId(int id) {
+    public ContactData withId(int id) {
         this.id = id;
+        return this;
     }
 
-    public void setGroup(String group) {
+    public ContactData withGroup(String group) {
         this.group = group;
+        return this;
     }
 
-    public void setMiddleName(String middleName) {
+    public ContactData withMiddleName(String middleName) {
         this.middleName = middleName;
+        return this;
     }
 
-    public void setCompanyName(String companyName) {
+    public ContactData withFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    public ContactData withLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public ContactData withWorkTel(String workTel) {
+        this.workTel = workTel;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withCompanyName(String companyName) {
         this.companyName = companyName;
+        return this;
     }
 }

@@ -13,7 +13,5 @@ public class SessionHelper extends HelperBase {
         type(By.name("user"), username);
         type(By.name("pass"), password);
         click(By.cssSelector("input:nth-child(7)"));
-
-
     }
 }

@@ -12,21 +12,21 @@ import java.util.List;
 public class ContactCreationTests extends TestBase {
     @Test
     public void testContactCreation() throws Exception {
-        List<ContactData> before = app.getContactHelper().getContactList();
+        List<ContactData> before = app.contact().getContactList();
         //new group creation, it would avoid situation when no one groups doesn't exit.
         app.goTo().groupPage();
-        app.group().create(new GroupData().withName("temp_group"));
+        app.group().create(new GroupData().withName("!temp_group"));
         //main test, contact creation
-        ContactData contact = new ContactData("ContNameNew1", "ContMiddleNew1",
-                "ContLastNew1", "CompanyOfContactNew", "111232, tuda-to, syuda-toNew",
-                "+74895238845", "contNew@adg.com", "temp_group");
-        app.getContactHelper().createContact(contact, true);
+        ContactData contact = new ContactData().withFirstName("ContNameNew1").withMiddleName("ContMiddleNew1").
+                withLastName("ContLastNew1").withCompanyName("CompanyOfContactNew").withAddress("111232, tuda-to, syuda-toNew").
+                withWorkTel("+74895238845").withEmail("contNew@adg.com").withGroup("!temp_group");
+        app.contact().createContact(contact, true);
         //temp group deletion
         app.goTo().groupPage();
         app.group().selectGroup(0);
         app.group().deleteSelectedGroup();
-        app.goTo().gotoHomePage();
-        List<ContactData> after = app.getContactHelper().getContactList();
+        app.goTo().homePage();
+        List<ContactData> after = app.contact().getContactList();
         Assert.assertEquals(after.size(), before.size() + 1);
 
         int max = 0;
@@ -35,10 +35,10 @@ public class ContactCreationTests extends TestBase {
                 max = c.getId();
             }
         }
-        contact.setId(max);
-        contact.setMiddleName(null);
-        contact.setCompanyName(null);
-        contact.setGroup(null);
+        contact.withId(max);
+        contact.withMiddleName(null);
+        contact.withCompanyName(null);
+        contact.withGroup(null);
         before.add(contact);
         Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
     }
