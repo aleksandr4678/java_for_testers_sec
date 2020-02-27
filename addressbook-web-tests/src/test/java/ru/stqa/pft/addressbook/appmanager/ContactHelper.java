@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,11 +29,11 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("/html/body/div[1]/div[4]/form[1]/input[22]"));
     }
 
-    public void createNewContact() {
+    public void create() {
         click(By.linkText("add new"));
     }
 
-    public void editContact() {
+    public void edit() {
         click(By.xpath("/html/body/div[1]/div[4]/form[2]/table/tbody/tr[2]/td[8]/a/img"));
     }
 
@@ -42,7 +41,7 @@ public class ContactHelper extends HelperBase {
         driver.findElements(By.name("selected[]")).get(index).click();
     }
 
-    public void deleteContact() {
+    public void delete() {
         click(By.xpath("/html/body/div[1]/div[4]/form[2]/div[2]/input"));
     }
 
@@ -70,13 +69,13 @@ public class ContactHelper extends HelperBase {
     }
 
     public void createContact(ContactData contact, boolean creation) {
-        createNewContact();
+        create();
         fillContactForm(contact, creation);
         submitContactCreation();
         returnToHomePage();
     }
 
-    public int getContactCount() {
+    public int count() {
         return driver.findElements(By.name("selected[]")).size();
     }
 
