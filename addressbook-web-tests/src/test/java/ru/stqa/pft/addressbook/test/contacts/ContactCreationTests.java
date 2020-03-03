@@ -6,6 +6,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.TestBase;
 
+import java.io.File;
 import java.util.HashSet;
 import java.util.List;
 
@@ -17,9 +18,10 @@ public class ContactCreationTests extends TestBase {
         app.goTo().groupPage();
         app.group().create(new GroupData().withName("!temp_group"));
         //main test, contact creation
+        File photo = new File("src/test/resources/img.png");
         ContactData contact = new ContactData().withFirstName("ContNameNew1").withMiddleName("ContMiddleNew1").
                 withLastName("ContLastNew1").withCompanyName("CompanyOfContactNew").withAddress("111232, tuda-to, syuda-toNew").
-                withWorkTel("+74895238845").withEmail("contNew@adg.com").withGroup("!temp_group");
+                withWorkTel("+74895238845").withEmail("contNew@adg.com").withGroup("!temp_group").withPhoto(photo);
         app.contact().createContact(contact, true);
         //temp group deletion
         app.goTo().groupPage();
